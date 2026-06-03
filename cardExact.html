@@ -7,34 +7,39 @@
 
 </head>
 <body>
-    <button id="return">Úvodní strana</button>
-    <h1>Tvorba karet</h1>
+    <div class="main">
+        <div class="header">
+            <h1 class="header-title">Tvorba karet</h1>
+            <button id="return">Úvodní strana</button>
+        </div>
 
 
 
-    <div id="pack_naming" class="visible">
-        <h2>Balíček</h2>
-        <label for="pack_name">Název skupiny karet</label>
-        <input id="pack_name" type="text">
+        <div id="pack_naming" class="visible">
+            <h2>Balíček</h2>
+            <label for="pack_name">Název skupiny karet</label>
+            <input id="pack_name" type="text">
 
-        <button id="pack_name_continue">pokračovat</button>
+            <button id="pack_name_continue" class="redirection">pokračovat</button>
+        </div>
+
+        <div id="card_making" class="hidden">
+            <h2 id="card_header">Karta</h2>
+
+            <label for="question">Název nové otázky</label>
+            <input id="question" type="text">
+            <br>
+            <label for="answer">Napište možné odpovědi</label>
+            <input id="answer" type="text">
+
+            <br>
+            <button id="next" class="redirection">Další karta</button>
+            <br>
+            <button id="submit" class="redirection">Konec</button>
+            <div id="card_display"></div>
+        </div>
     </div>
 
-    <div id="card_making" class="hidden">
-        <h2 id="card_header">Karta</h2>
-
-        <label for="question">Název nové otázky</label>
-        <input id="question" type="text">
-        <br>
-        <label for="answer">Napište možné odpovědi</label>
-        <input id="answer" type="text">
-
-        <br>
-        <button id="next">Další karta</button>
-        <br>
-        <button id="submit">Konec</button>
-        <div id="card_display"></div>
-    </div>
 
 
     <script src="card_exact.js"></script>
