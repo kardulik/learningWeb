@@ -64,3 +64,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+
+.main_title{
+    background-color: black;
+}

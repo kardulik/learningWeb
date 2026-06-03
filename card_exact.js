@@ -103,7 +103,6 @@ submit.addEventListener("click", function(event) {
     }
 
     localStorage.setItem("karty", JSON.stringify(cards));
-
     window.open("main.html", "_self");
 })
 
