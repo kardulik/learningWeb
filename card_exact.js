@@ -1,8 +1,13 @@
 let cards = []
 
 const _return = document.getElementById("return");
+const _main_page = document.getElementById("main_page_return");
 
 _return.addEventListener("click", function() {
+    if (window.confirm("Jste si jistý že chcete zahodit tvorbu a odejít?"))
+        window.open("cardOptions.html", "_self");
+});
+_main_page.addEventListener("click", function() {
     if (window.confirm("Jste si jistý že chcete zahodit tvorbu a odejít?"))
         window.open("main.html", "_self");
 });
