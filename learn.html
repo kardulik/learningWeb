@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="secondTry.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <div class="page">
         <div class="header">
             <h1>Učení</h1>
-            <a href="main.html">return</a>
+            <a href="main.html">Úvodní stránka</a>
+            <button class="hidden" id="return">Zpět</button>
         </div>
         <div class="main">
             <h1>Poslední zobrazené karty:</h1>
-            <div class="cards">
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
+            <div id="lastSeen" class="cards">
             </div>
             <h1>Všechny uložené karty:</h1>
             <div class="cards">
@@ -38,14 +36,38 @@
                 <button class="box"></button>
                 <button class="box"></button>
             </div>
-        </div>
+        </div><!--card chosing-->
+        <div class="main hidden"></div><!--card learn-->
+        <div class="main hidden">
+            <div id="pack_naming">
+                <h1>Balíček</h1>
+                <label for="pack_name">Název skupiny karet</label>
+                <input id="pack_name" type="text">
 
+                <button id="pack_name_continue">Nastavit</button>
+            </div>
 
+            <div id="card_making">
+                <h1 id="card_header"></h1>
+
+                <label for="question">Název nové otázky</label>
+                <input id="question" type="text">
+                <br>
+                <label for="answer">Napište možné odpovědi</label>
+                <input id="answer" type="text">
+
+                <br>
+                <button id="next" class="redirection">Přidat kartu</button>
+                <br>
+                <div id="card_display"></div>
+                <button id="submit" class="redirection">Konec</button>
+            </div>
+        </div><!--card editing-->
 
     </div>
 
 
-
+    <script src="learnPage.js"></script>
     <!--
     <script src="learn.js"></script>
     -->

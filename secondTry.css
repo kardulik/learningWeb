@@ -6,6 +6,10 @@ body{
     display: flex;
     font-weight: bold;
 }
+.hidden{
+    display: none;
+}
+
 .page{
     background-color: white;
     width: 80vw;
@@ -61,7 +65,10 @@ body{
     h1{
         margin-left: -70px;
     }
-
+    h2{
+        font-size: 40px;
+        text-align: center;
+    }
     a{
         display: inline-block;
         font-size: 30px;
@@ -101,6 +108,9 @@ body{
     }
     button:hover{
         background-color: lightgreen;
+    }
+    button.hidden{
+        display: none;
     }
     padding: 20px 100px;
 }
