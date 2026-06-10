@@ -1,5 +1,6 @@
 let apiKey= "31d6cfe0d16ae931b73c59d7e0c089c0";
 let searchResults = document.getElementById("searchResults");
+let cardSpace = document.getElementById("cards");
 
 window.addEventListener('load', async function() {
     console.log('loaded');
@@ -20,7 +21,7 @@ window.addEventListener('load', async function() {
         box.addEventListener("click", function () {
             showResult(b)
         })
-        searchResults.appendChild(box);
+        cardSpace.appendChild(box);
     }
 })
 
