@@ -97,6 +97,7 @@ function play(learnInfo){
         nextButton.innerText = "Daší";
         deleteButton.classList.add("hidden");
         editButton.classList.add("hidden");
+        uploadButton.classList.add("hidden");
         showCard(questionIndex, 1);
     })
 
