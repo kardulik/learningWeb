@@ -1,5 +1,6 @@
 const lastSeen = document.getElementById("lastSeen");
 let cards;
+let apiKey = "31d6cfe0d16ae931b73c59d7e0c089c0";
 window.addEventListener("load", function() {
     for (var a in localStorage) {
         let temp = JSON.parse(localStorage.getItem(a))
@@ -39,7 +40,7 @@ function play(learnInfo){
     pageName.textContent = learnInfo.name;
     page[1].append(pageName);
 
-    cards = learnInfo.cards;
+    cards = learnInfo.questions;
     for (let a in cards){
         showCard(a, 0)
     }
@@ -70,6 +71,25 @@ function play(learnInfo){
         }
     })
 
+    let uploadButton = document.createElement("button");
+    uploadButton.innerText = "Nahrát na web";
+    uploadButton.addEventListener("click", async function(){
+        if(window.confirm(`Opravdu chcete ${name} nahrát pro všechny?`)){
+            let information = JSON.stringify({
+                "name": name,
+                "type": "cards",
+                "questions": learnInfo.questions
+            });
+            let response = await fetch(`https://mottl.delta-www.cz/api/stehlik_api.php`, {
+                method: 'POST',
+                headers: {
+                    'X-API-Key': apiKey
+                },
+                body: information
+            });
+        }
+    })
+
     let nextButton = document.createElement("button");
     nextButton.innerText = "Hrát";
     nextButton.addEventListener("click", function(){
@@ -83,6 +103,7 @@ function play(learnInfo){
     page[1].append(cardSpot);
     page[1].append(editButton);
     page[1].append(deleteButton);
+    page[1].append(uploadButton);
     page[1].append(nextButton);
 }
 
@@ -107,10 +128,10 @@ function showCard(cardId, answerType, destination = cardSpot){
 }
 
 function addCorrectAnswer(card, cardId){
-    for(const answerId in cards[cardId].answer) {
+    for(const answerId in cards[cardId].answers) {
         const answer = document.createElement("p");
-        answer.textContent = cards[cardId].answer[answerId];
-        if(cards[cardId].correctAnswer[answerId]){
+        answer.textContent = cards[cardId].answers[answerId];
+        if(cards[cardId].correct[answerId]){
             answer.classList.add("correct_answer");
         }
         card.append(answer);
@@ -120,8 +141,8 @@ function addCorrectAnswer(card, cardId){
 
 function addGuessAnswer(card, cardId){
     cardSpot.innerHTML = "";
-    let oldCorrect = cards[cardId].correctAnswer.concat();
-    let oldAnswers = cards[cardId].answer.concat();
+    let oldCorrect = cards[cardId].correct.concat();
+    let oldAnswers = cards[cardId].answers.concat();
 
     let answers = [];
     let correct = [];
@@ -153,10 +174,10 @@ function addGuessAnswer(card, cardId){
 
 
 function addEdit(card, cardId){
-    for(const answerId in cards[cardId].answer) {
+    for(const answerId in cards[cardId].answers) {
         const answer = document.createElement("p");
-        answer.textContent = cards[cardId].answer[answerId];
-        if(cards[cardId].correctAnswer[answerId]){
+        answer.textContent = cards[cardId].answers[answerId];
+        if(cards[cardId].correct[answerId]){
             answer.classList.add("correct_answer");
         }
         card.append(answer);

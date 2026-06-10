@@ -1,7 +1,7 @@
-let cards = []
+let questions = []
 let pack = {
     name: "Karty",
-    cards
+    questions
 }
 
 
@@ -51,10 +51,10 @@ continueButton.addEventListener("click", function(event) {
 
     let newCard = {
         question: _question.value,
-        answer: _answer.value.split(","),
-        correctAnswer: []
+        answers: _answer.value.split(","),
+        correct: []
     }
-    cards.push(newCard)
+    questions.push(newCard)
 
     _question.value = null;
     _answer.value = null;
@@ -65,23 +65,23 @@ continueButton.addEventListener("click", function(event) {
     question.textContent = newCard.question;
     card.append(question);
 
-    for (const answerIndex in newCard.answer) {
+    for (const answerIndex in newCard.answers) {
         const answer = document.createElement("button");
-        answer.textContent = newCard.answer[answerIndex];
+        answer.textContent = newCard.answers[answerIndex];
 
         answer.addEventListener("click", function () {
             if (answer.classList.contains("button_clicked")) {
                 answer.classList.remove("button_clicked");
-                newCard.correctAnswer[answerIndex] = false;
+                newCard.correct[answerIndex] = false;
             }
             else {
                 answer.classList.add("button_clicked");
-                newCard.correctAnswer[answerIndex] = true;
+                newCard.correct[answerIndex] = true;
             }
         })
         card.append(answer);
 
-        newCard.correctAnswer[answerIndex] = false;
+        newCard.correct[answerIndex] = false;
 
         card_display.append(card);
     }
@@ -91,18 +91,18 @@ continueButton.addEventListener("click", function(event) {
     editButton.textContent = "Upravit"
     editButton.addEventListener("click", function() {
         _question.value = newCard.question;
-        _answer.value = newCard.answer;
+        _answer.value = newCard.answers;
         card.remove();
-        cards.splice(cards.indexOf(newCard), 1);
-        console.log(cards);
+        questions.splice(questions.indexOf(newCard), 1);
+        console.log(questions);
     })
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Odstranit"
     deleteButton.addEventListener("click", function() {
         if(window.confirm(`Opravdu chcete odstranit ${question.textContent}?`)){
             card.remove();
-            cards.splice(cards.indexOf(newCard), 1);
-            console.log(cards);
+            questions.splice(questions.indexOf(newCard), 1);
+            console.log(questions);
         }
     })
 

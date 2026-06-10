@@ -5,9 +5,11 @@ const FILES_TO_CACHE = [
     "./learn.html",
     "./cardOptions.html",
     "./finishedCreation.html",
+    "./search.html",
     "./main.js",
     "./learnPage.js",
     "./card_exact.js",
+    "./search.js",
     "./secondTry.css",
     "./icon-192.png",
     "./icon-512.png"
